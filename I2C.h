@@ -77,11 +77,6 @@ void setRTC_day(uint8_t day);
  *
  * */
 void setRTC_month(uint8_t month);
-/*\brief Esta funcion recibe un valor entero que se convierte en BCD para ser guardado en la parte de año del RTC.
- * \param[year] numero entero para años
- *
- * */
-void setRTC_year(uint16_t year);
 
 
 #endif /* I2C_H_ */

@@ -285,35 +285,7 @@ uint8_t readRTC_month()
 	return months;
 }
 
-uint8_t readRTC_year()
-{
-	i2c_master_transfer_t masterXfer;
 
-	I2C_MasterTransferCreateHandle(I2C0, &g_m_handle,i2c_master_callback, NULL);
-
-	uint8_t years;
-	uint8_t yearsadd = YEARADDRESS;
-
-	xSemaphoreTake(i2cMutex, portMAX_DELAY);
-
-
-	masterXfer.slaveAddress = RTCADDRESS;
-	masterXfer.direction = kI2C_Read;
-	masterXfer.subaddress = yearsadd;
-	masterXfer.subaddressSize = 1;
-	masterXfer.data = &years;
-	masterXfer.dataSize = 1;
-	masterXfer.flags = kI2C_TransferDefaultFlag;
-
-	I2C_MasterTransferNonBlocking(I2C0,  &g_m_handle,&masterXfer);
-
-	while (!g_MasterCompletionFlag){}
-	g_MasterCompletionFlag = false;
-	xSemaphoreGive(i2cMutex);
-
-	return years;
-
-}
 
 
 
@@ -486,33 +458,7 @@ void setRTC_month(uint8_t month)
 
 }
 
-void setRTC_year(uint16_t year)
-{
-	i2c_master_transfer_t masterXfer;
 
-	I2C_MasterTransferCreateHandle(I2C0, &g_m_handle,i2c_master_callback, NULL);
-
-	uint8_t years;
-	uint8_t yearsadd = YEARADDRESS;
-	xSemaphoreTake(i2cMutex, portMAX_DELAY);
-
-	masterXfer.slaveAddress = RTCADDRESS;
-	masterXfer.direction = kI2C_Write;
-	masterXfer.subaddress = yearsadd;
-	masterXfer.subaddressSize = 1;
-	masterXfer.data = &years;
-	masterXfer.dataSize = 1;
-	masterXfer.flags = kI2C_TransferDefaultFlag;
-
-	I2C_MasterTransferNonBlocking(I2C0,  &g_m_handle,&masterXfer);
-
-	while (!g_MasterCompletionFlag){}
-	g_MasterCompletionFlag = false;
-	xSemaphoreGive(i2cMutex);
-
-	return years;
-
-}
 
 void I2Cwritedelay()
 {
