@@ -70,8 +70,8 @@ int main(void) {
     /* Enter an infinite loop, just incrementing a counter. */
     while(1) {
 
-    	writeMemory(0x0010,99);
-    	PRINTF("\rLa lectura de memoria dio: %d \n",readMemory(0x0010));
+    	//writeMemory(0x0010,99);
+    	//PRINTF("\rLa lectura de memoria dio: %d \n",readMemory(0x0010));
     	PRINTF("\rLa Hora es: %d%d : %d%d : %d%d\n",BCDHDec(readRTC_hour()),BCDunits(readRTC_hour()),BCDtens(readRTC_min()),BCDunits(readRTC_min()),BCDtens(readRTC_sec()),BCDunits(readRTC_sec()));
     	PRINTF("\rLa fecha es: %d / %d%d / %d%d\n",2018,BCDtens(readRTC_month()),BCDunits(readRTC_month()),BCDtens(readRTC_day()),BCDunits(readRTC_day()));
     	//setRTC_min(0);
