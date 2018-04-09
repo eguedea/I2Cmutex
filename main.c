@@ -61,21 +61,21 @@ int main(void) {
     PRINTF("START");
     /* Force the counter to be placed into memory. */
     volatile static int i = 0 ;
-    setRTC_hour(9);
-    setRTC_min(59);
-    setRTC_sec(40);
-    setRTC_day(20);
-    setRTC_month(6);
+  //  setRTC_hour(9);
+   // setRTC_min(59);
+    //setRTC_sec(40);
+    //setRTC_day(20);
+    //setRTC_month(6);
 
     /* Enter an infinite loop, just incrementing a counter. */
     while(1) {
 
     	//writeMemory(0x0010,99);
     	//PRINTF("\rLa lectura de memoria dio: %d \n",readMemory(0x0010));
-    	PRINTF("\rLa Hora es: %d%d : %d%d : %d%d\n",BCDHDec(readRTC_hour()),BCDunits(readRTC_hour()),BCDtens(readRTC_min()),BCDunits(readRTC_min()),BCDtens(readRTC_sec()),BCDunits(readRTC_sec()));
-    	PRINTF("\rLa fecha es: %d / %d%d / %d%d\n",2018,BCDtens(readRTC_month()),BCDunits(readRTC_month()),BCDtens(readRTC_day()),BCDunits(readRTC_day()));
+    	//PRINTF("\rLa Hora es: %d%d : %d%d : %d%d\n",BCDHDec(readRTC_hour()),BCDunits(readRTC_hour()),BCDtens(readRTC_min()),BCDunits(readRTC_min()),BCDtens(readRTC_sec()),BCDunits(readRTC_sec()));
+    	//PRINTF("\rLa fecha es: %d / %d%d / %d%d\n",2018,BCDtens(readRTC_month()),BCDunits(readRTC_month()),BCDtens(readRTC_day()),BCDunits(readRTC_day()));
     	//setRTC_min(0);
-
+    	readRTC_sec();
 
 
 
